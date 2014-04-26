@@ -115,12 +115,16 @@ function printCard(id, card) {
     el.innerHTML = str;
 }
 
+function clear(id) {
+    document.getElementById(id).innerHTML = "";
+}
 
 
 //player hand (first two cards)
 function hand() {
-    card1 = getCard();
     id = 'player';
+    clear(id);
+    card1 = getCard();
     printCard(id, card1);
     card2 = getCard();
     printCard(id, card2);
@@ -155,8 +159,9 @@ function getTotal(total, id, name) {
 
 //dealer first 2 cards
 function dealer() {
-    dCard1 = getCard();
     id = 'dealer';
+    clear(id);
+    dCard1 = getCard();
     printCard(id, dCard1);
     dCard2 = getCard();
     printCard(id, dCard2);
@@ -172,19 +177,21 @@ function bet() {
 //      betAmt = 100;
 //    alert(betAmt);
 //    alert("status " + status);
-    if (status == 0) {
+//    if (status == 0) {
 //        alert(status);
-        if ((betAmt > 0)) {
+        if ((betAmt > 0) && (betAmt <= chips)) {
             dealer();
             hand();
             game();
 //            sendData();
             status = 1;
             alert("chips" + chips + "bet = " + betAmt);
-        } else {
+        } else if (betAmt > chips) {
+            alert("You do not have enough chips");
+        }else {
             alert("Must place a bet to play!");
         }
-    }
+//    }
 }
 
 function game(){
@@ -213,7 +220,7 @@ function sendData(){
 //"LOST": boolVar2});
     
     $.post("upMoney.php", {'chips': chips});
-
+    displayChips();
 }
 buttons();
 displayChips();

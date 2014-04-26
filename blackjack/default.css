@@ -442,8 +442,14 @@ html>body #footer {
     margin-right: auto;
     width: 500px;
     height: 600px;
+    /*background-color: blue;*/
 }
-
+#war{
+    width: 500px;
+    height: 300px;
+    
+    /*background-color: graytext;*/
+}
 #buttons{
     width: 500px;
     height:110px;
@@ -460,22 +466,26 @@ html>body #footer {
 }
 
 #dealer{
-    width: 400px;
+    width: 250px;
     height: 150px;
+    /*background-color: green;*/
 }
 #pTotal{
     font-size: 18pt;
     float: right;
-    padding-top: 60px;
+   padding-top: 60px;
+   /*background-color: green;*/
 }
 #dTotal{
     font-size: 18pt;
     float: right;
     padding-top: 60px;
+    /*background-color: green;*/
 }
 #player{
-    width: 400px;
-    height: 105px;
+    width: 250px;
+    height: 150px;
+    /*background-color: green;*/
 }
 #chips{
     padding-top: 20px;
