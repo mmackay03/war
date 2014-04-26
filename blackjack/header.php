@@ -1,9 +1,4 @@
-<?php
-   require_once("debug.php");
-   require_once("blackLib.php");
-   setSessions($debug);
-?>
-
+<html>
 <!--
 
 Design by Free CSS Templates
@@ -18,10 +13,14 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 -->
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Blackjack - Home</title>
+<!--<title>Blackjack - Home</title>-->
 <meta name="keywords" content="" />
 <meta name="description" content="" />
+<script src="js/jquery.js"></script>
 <link href="default.css" rel="stylesheet" type="text/css" />
+<script src="../js/amcharts/amcharts.js" type="text/javascript"></script>
+<script src="../js/amcharts/serial.js" type="text/javascript"></script>
+<script src="../js/amcharts/themes/chalk.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -36,7 +35,8 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="#">Homepage</a></li>
+                    <li><a href="index.php">Homepage</a></li> 
+                    <!--class="current_page_item"-->
                         <li><a href="play.php">Play</a></li>
                         <li><a href="stats.php">Individual Stats</a></li>
                         <li><a href="leader.php">leader board</a></li>

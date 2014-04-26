@@ -176,7 +176,7 @@ function bet() {
             dealer();
             hand();
             game();
-            sendData();
+//            sendData();
             status = 1;
         } else {
             alert("Must place a bet to play!");

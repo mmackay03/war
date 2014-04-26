@@ -10,7 +10,7 @@ and open the template in the editor.
    require_once("blackLib.php");
    setSessions($debug);
 ?>
-
+<title>Blackjack - Home</title>
 <!--
 
 Design by Free CSS Templates
