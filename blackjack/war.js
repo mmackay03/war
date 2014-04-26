@@ -1,3 +1,5 @@
+//test Margo can you get this update?
+
 var cards = new Array();
 cards[0] = new Array("val", "ace");
 cards[1] = new Array(11, true);
