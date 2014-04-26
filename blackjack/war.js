@@ -167,7 +167,9 @@ function dealer() {
 
 var betAmt = 0;
 function bet() {
-    var betAmt = document.getElementById('bet').value;
+    betAmt = document.getElementById('bet').value;
+    betAmt = parseInt(betAmt);
+//      betAmt = 100;
 //    alert(betAmt);
 //    alert("status " + status);
     if (status == 0) {
@@ -178,6 +180,7 @@ function bet() {
             game();
 //            sendData();
             status = 1;
+            alert("chips" + chips + "bet = " + betAmt);
         } else {
             alert("Must place a bet to play!");
         }
@@ -187,11 +190,16 @@ function bet() {
 function game(){
     if (dTotal > pTotal){
         alert('dealer wins');
-        chips = chips - betAmt;
+        chips = (chips - betAmt);
+        alert("chips total " + chips);
         //loss++
+        sendData();
     }else{
         alert('you win');
         //win++
+        chips += betAmt;
+        alert("chips total " + chips);
+        sendData();
         
     }
 }
@@ -203,6 +211,7 @@ function sendData(){
 //        'ANOTHER': whateverVariable,
 //    "WON": boolVar,
 //"LOST": boolVar2});
+    
     $.post("upMoney.php", {'chips': chips});
 
 }
