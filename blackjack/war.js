@@ -1,5 +1,3 @@
-//test Margo can you get this update?
-
 var cards = new Array();
 cards[0] = new Array("val", "ace");
 cards[1] = new Array(11, true);
@@ -72,25 +70,26 @@ card1 = 0;
 card2 = 0;
 //next = 0;
 chips = 0;
+win = 0;
+lose = 0;
 
 function buttons() {
     var el = document.getElementById("buttons");
     $.ajaxSetup({
         async: false
     });
-    $.getJSON("money.php", function(json){
-        console.log("Json output: " + json[0].chips);
+    $.getJSON("getDB.php", function(json) {
+        console.log("Json output chips: " + json[0].chips);
         chips = json[0].chips;
+        console.log("Json output win: " + json[1].win);
+        win = json[1].win;
+        console.log("Json output lose: " + json[2].lose);
+        lose = json[2].lose;
     });
     // console.log(el);
     str = el.innerHTML;
 
     str += "<img src='images/chip_1.png' onclick='bet()'>";
-//    str += "<img src='images/chip_2.png' onclick='hit()'>";
-//    str += "<img src='images/chip_3.png' onclick='stay()'>";
-//    str += "<button type = 'submit' action='play.php'>new game</button>";
-//    str += "<img src='images/chip_4.png' >";
-//    str += "<img src='images/chip_5.png' onclick='double()'>";
     el.innerHTML = str;
 
 }
@@ -124,6 +123,7 @@ function clear(id) {
 
 //player hand (first two cards)
 function hand() {
+    pTotal = 0;
     id = 'player';
     clear(id);
     card1 = getCard();
@@ -145,7 +145,7 @@ function getValue(c) {
 
 }
 
-function displayChips(){
+function displayChips() {
     var ele = document.getElementById('chips');
     str = ele.innerHTML;
     str = chips;
@@ -156,11 +156,12 @@ function getTotal(total, id, name) {
     var ele = document.getElementById(id);
     str = ele.innerHTML;
     str = total;
-    ele.innerHTML = name+ " Total: " + str;
+    ele.innerHTML = name + " Total: " + str;
 }
 
 //dealer first 2 cards
 function dealer() {
+    dTotal = 0;
     id = 'dealer';
     clear(id);
     dCard1 = getCard();
@@ -181,49 +182,61 @@ function bet() {
 //    alert("status " + status);
 //    if (status == 0) {
 //        alert(status);
-        if ((betAmt > 0) && (betAmt <= chips)) {
-            dealer();
-            hand();
-            game();
+    if ((betAmt > 0) && (betAmt <= chips)) {
+        dealer();
+        hand();
+        game();
 //            sendData();
-            status = 1;
-            alert("chips" + chips + "bet = " + betAmt);
-        } else if (betAmt > chips) {
-            alert("You do not have enough chips");
-        }else {
-            alert("Must place a bet to play!");
-        }
+//        status = 1;
+        alert("chips" + chips + "bet = " + betAmt);
+    } else if (betAmt > chips) {
+        alert("You do not have enough chips");
+    } else {
+        alert("Must place a bet to play!");
+    }
 //    }
 }
 
-function game(){
-    if (dTotal > pTotal){
-        alert('dealer wins');
+function game() {
+    if (dTotal > pTotal) {
+        alert('Dealer Wins');
         chips = (chips - betAmt);
         alert("chips total " + chips);
-        //loss++
+//        lose = true;
+        lose++;
+        alert("lose ----- " + lose);
         sendData();
-    }else{
-        alert('you win');
+        displayChips();
+    } else if (dTotal === pTotal) {
+        alert("Draw");
+    } else {
+        alert('You Win');
         //win++
+        win++;
+        alert("win ---- " + win);
         chips += betAmt;
         alert("chips total " + chips);
+//        win = true;
         sendData();
-        
+        displayChips();
+
     }
 }
 
 
-function sendData(){
+function sendData() {
 //    $.post("upMoney.php", {'bet': betAmount,
 //        'WHATEVER': variableName,
 //        'ANOTHER': whateverVariable,
 //    "WON": boolVar,
 //"LOST": boolVar2});
-    
-    $.post("upMoney.php", {'chips': chips});
-    displayChips();
+    alert("win = " + win + "  lose = " + lose);
+    $.post("updateDB.php", {'chips': chips,
+    'win': win,
+    'lose': lose});
+//    displayChips();
 }
+
+
 buttons();
 displayChips();
-

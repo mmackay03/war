@@ -14,9 +14,15 @@ if (mysqli_connect_errno())
   //echo $user;
   
 $getMon = mysqli_query($con, "SELECT money FROM uinfo WHERE $uid = uid ");
+$getWin = mysqli_query($con, "SELECT wins FROM `stats` WHERE $uid = uid ");
+$winInfo = mysqli_fetch_array( $getWin );
+$getLos = mysqli_query($con, "SELECT losses FROM `stats` WHERE $uid = uid ");
+$losInfo = mysqli_fetch_array( $getLos );
 //echo $getMon;
 while($info = mysqli_fetch_array( $getMon )){
-    print "[{\"chips\":" . $info['money'] . "}]";
+    print "[{\"chips\":" . $info['money'] . "},"
+            . "{\"win\":" . $winInfo['wins'] . "},"
+            . "{\"lose\":" . $losInfo['losses'] . "}]";
     //echo $info;
     //echo "<br/>";
     //echo $info["money"];

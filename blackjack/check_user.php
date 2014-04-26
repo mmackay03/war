@@ -124,7 +124,7 @@ header("Location: play.php");
  	$insert = "INSERT INTO user (user_name, pass)
         VALUES ('".$_REQUEST['nuser']."', '".$_REQUEST['npass1']."')";
         $add_member = mysqli_query($con, $insert);
-        header("Location: addMoney.php");
+        header("Location: addDB.php");
         
     }
     
