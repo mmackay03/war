@@ -14,10 +14,12 @@ if (mysqli_connect_errno())
   //echo $user;
   
 $getMon = mysqli_query($con, "SELECT money FROM uinfo WHERE $uid = uid ");
-
+$getColor =  mysqli_query($con, "SELECT color FROM settings WHERE $uid = uid ");
+$colorInfo = mysqli_fetch_array( $getColor );
 //echo $getMon;
 while($info = mysqli_fetch_array( $getMon )){
-    print "[{\"chips\":" . $info['money'] . "}]";
+    print "[{\"chips\":" . $info['money'] . ","
+            . "\"color\":" . $colorInfo['color'] . "}]";
     //echo $info;
     //echo "<br/>";
     //echo $info["money"];

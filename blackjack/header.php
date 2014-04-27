@@ -40,9 +40,8 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
                         <li><a href="play.php">Play</a></li>
                         <li><a href="stats.php">Individual Stats</a></li>
                         <li><a href="leader.php">leader board</a></li>
-			<li><a href="#"></a></li>
-			<li><a href="#"></a></li>
-			<li><a href="#"></a></li>
+			<li><a href="color.php">color setting</a></li>
+		
 			<li><a href="#"></a></li>
 			<li><a href="#"></a></li>
 			<li><a href="#"></a></li>

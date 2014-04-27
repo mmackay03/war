@@ -73,6 +73,8 @@ chips = 0;
 win = 0;
 lose = 0;
 draw = 0;
+color = 0;
+colorStr = '';
 
 function buttons() {
     var el = document.getElementById("buttons");
@@ -82,6 +84,8 @@ function buttons() {
     $.getJSON("getDB.php", function(json) {
         console.log("Json output chips: " + json[0].chips);
         chips = json[0].chips;
+        color = json[0].color;
+        console.log("Json output color: " + json[0].color);
     });
     // console.log(el);
     str = el.innerHTML;
@@ -89,6 +93,19 @@ function buttons() {
     str += "<img src='images/chip_1.png' onclick='bet()'>";
     el.innerHTML = str;
 
+}
+function setting(){
+    if (color === 0){
+        colorStr = 'white';
+    }else if (color === 1){
+        colorStr = '#4186D3';
+    }else if (color === 2){
+        colorStr = '#00CC00';
+    }else if (color === 3){
+        colorStr = '#C9007A';
+    }else if (color === 4){
+        colorStr = '#8C04A8';
+    }
 }
 
 
@@ -146,14 +163,15 @@ function displayChips() {
     var ele = document.getElementById('chips');
     str = ele.innerHTML;
     str = chips;
-    ele.innerHTML = "Your Chips: <br />$" + str;
+    ele.innerHTML = "<span style ='color: " + colorStr + ";'>" + "Your Chips: <br />$" + str + "</span>";
 }
 //display player total
 function getTotal(total, id, name) {
     var ele = document.getElementById(id);
     str = ele.innerHTML;
     str = total;
-    ele.innerHTML = name + " Total: " + str;
+    ele.innerHTML = "<span style ='color: " + colorStr + ";'>" + name + " Total: " + str +"</span>";
+
 }
 
 //dealer first 2 cards
@@ -202,6 +220,7 @@ function game() {
 //        lose = true;
         lose = 1;
         alert("lose ----- " + lose);
+        bankrupt();
         sendData();
         displayChips();
     } else if (dTotal === pTotal) {
@@ -215,6 +234,7 @@ function game() {
         chips += betAmt;
         alert("chips total " + chips);
 //        win = true;
+        bankrupt();
         sendData();
         displayChips();
 
@@ -235,7 +255,15 @@ function sendData() {
     'draw': draw});
 //    displayChips();
 }
+function bankrupt(){
+    if(chips === 0){
+        chips = 1000;
+        alert("You will be credited $1000");
+    }
+}
 
 
 buttons();
+setting();
+bankrupt();
 displayChips();

@@ -15,6 +15,6 @@
 </div>
 <!-- end footer -->
 <div align=center>This template  downloaded form <a href='http://all-free-download.com/free-website-templates/'>free website templates</a></div></body>
-<script type="text/javascript" src="war.js"></script>
+<script type="text/javascript" src="color.js"></script>
 
 </html>
