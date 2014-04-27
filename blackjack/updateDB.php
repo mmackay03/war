@@ -16,9 +16,11 @@ $win = $_POST['win'];
 //$win = 5;
 //$lose = 5;
 $lose = $_POST['lose'];
-$gameStats = "INSERT INTO `stats` (uid, played, wins, losses) VALUES ($uid, 1, $win, $lose)";
+$draw = $_POST['draw'];
+$gameStats = "INSERT INTO `stats` (uid, played, wins, losses, draw) VALUES ($uid, 1, $win, $lose, $draw)";
 //$winStr = "UPDATE `stats` SET wins = $win WHERE uid = $uid;";
 //$losStr = " UPDATE `stats` SET losses = $lose WHERE uid = $uid;";
+//$queryColor = "UPDATE `settings` SET color = 1"
 $queryStr = "UPDATE `uinfo` SET money = $chips WHERE uid = $uid;";
 
 //mysqli_query($con, $winStr) or die("Database query failed SQLcmd=$winStr Error_str=" . mysql_error());

@@ -112,7 +112,16 @@ setSessions($debug);
             graph3.title = "Losses";
             chart.addGraph(graph3);
 
-
+            var graph4 = new AmCharts.AmGraph();
+            graph4.valueField = "sumD";
+            graph4.bullet = "bubble";
+            graph4.bulletBorderColor = "#FFFFFF";
+            graph4.bulletBorderThickness = 2;
+            graph4.lineThickness = 2;
+            graph4.lineColor = "#E77FD6";
+            graph4.lineAlpha = 0.5;
+            graph4.title = "Draws";
+            chart.addGraph(graph4);
 
             // CATEGORY AXIS 
             chart.categoryAxis.parseDates = true;
@@ -126,7 +135,7 @@ setSessions($debug);
 
             tPrint += "<table><tr><th>" + chart.categoryField + "</th><th>"
                     + graph1.title + "</th><th>" +
-                    graph2.title + "</th><th>" + graph3.title + "</th>";
+                    graph2.title + "</th><th>" + graph3.title + "</th><th>" + graph4.title + "</th>";
             for (i = 0; i < chartData.length; i++) {
                 tPrint += "<tr><td>";
                 tPrint += chartData[i].date;
@@ -136,6 +145,8 @@ setSessions($debug);
                 tPrint += chartData[i].sumw;
                 tPrint += "</td><td>";
                 tPrint += chartData[i].sumL;
+                tPrint += "</td><td>";
+                tPrint += chartData[i].sumD;
                 tPrint += "</td></tr>";
             }
 

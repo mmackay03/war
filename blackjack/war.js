@@ -72,6 +72,7 @@ card2 = 0;
 chips = 0;
 win = 0;
 lose = 0;
+draw = 0;
 
 function buttons() {
     var el = document.getElementById("buttons");
@@ -199,16 +200,17 @@ function game() {
         chips = (chips - betAmt);
         alert("chips total " + chips);
 //        lose = true;
-        lose++;
+        lose = 1;
         alert("lose ----- " + lose);
         sendData();
         displayChips();
     } else if (dTotal === pTotal) {
         alert("Draw");
+        draw = 1;
     } else {
         alert('You Win');
         //win++
-        win++;
+        win = 1;
         alert("win ---- " + win);
         chips += betAmt;
         alert("chips total " + chips);
@@ -229,7 +231,8 @@ function sendData() {
     alert("win = " + win + "  lose = " + lose);
     $.post("updateDB.php", {'chips': chips,
     'win': win,
-    'lose': lose});
+    'lose': lose,
+    'draw': draw});
 //    displayChips();
 }
 
