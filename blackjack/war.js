@@ -81,10 +81,6 @@ function buttons() {
     $.getJSON("getDB.php", function(json) {
         console.log("Json output chips: " + json[0].chips);
         chips = json[0].chips;
-        console.log("Json output win: " + json[1].win);
-        win = json[1].win;
-        console.log("Json output lose: " + json[2].lose);
-        lose = json[2].lose;
     });
     // console.log(el);
     str = el.innerHTML;

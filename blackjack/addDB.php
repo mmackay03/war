@@ -10,8 +10,6 @@ $con=mysqli_connect("127.0.0.1","login","login","blackjack") or die(mysql_error(
    $info = mysqli_fetch_assoc($getUid);
    $_SESSION['uid'] = $info["uid"];
    $chips =  "INSERT INTO uinfo (uid) VALUES ($_SESSION[uid])";
-   $stats = "INSERT INTO `stats` (uid) VALUES ($_SESSION[uid])";
-   $addChips = mysqli_query($con, $chips);
-   $addStats = mysqli_query($con, $stats);
+   $addChips = mysqli_query($con, $chips);\
    setSessions($debug);
    header("Location:index.php");
