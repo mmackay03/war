@@ -492,3 +492,28 @@ html>body #footer {
     float: right;
     font-size: 25pt;
 }
+table, th
+{
+border:1px solid pink;
+border-collapse:collapse;
+font-size: 20pt;
+
+}
+table.form, td.form{
+    border: 1px;
+    width: 200px;
+    font-weight: bold;
+    font-family: "Times New Roman";
+    font-size:15pt;
+    text-align: center;
+    color:#3399FF;
+}
+td.dis{
+    border: 1px solid pink;
+    width: 200px;
+    font-weight: bold;
+    font-family: "Times New Roman";
+    font-size:15pt;
+    text-align: center;
+    color:#3399FF;
+}
