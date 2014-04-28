@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2014 at 07:44 AM
--- Server version: 5.6.11
--- PHP Version: 5.5.1
+-- Generation Time: Apr 27, 2014 at 11:30 PM
+-- Server version: 5.5.32
+-- PHP Version: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -21,27 +21,6 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `blackjack` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `blackjack`;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
-
-CREATE TABLE IF NOT EXISTS `admin` (
-  `uid` int(10) NOT NULL,
-  `admin` int(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`uid`, `admin`) VALUES
-(19, 0),
-(29, 1),
-(31, 1);
 
 -- --------------------------------------------------------
 
@@ -80,10 +59,7 @@ INSERT INTO `settings` (`uid`, `color`) VALUES
 (19, 2),
 (22, 0),
 (23, 0),
-(25, 0),
-(29, 3),
-(30, 0),
-(31, 0);
+(25, 0);
 
 -- --------------------------------------------------------
 
@@ -177,15 +153,12 @@ CREATE TABLE IF NOT EXISTS `uinfo` (
 --
 
 INSERT INTO `uinfo` (`uid`, `money`, `last_login`) VALUES
-(19, 1500, '2014-04-28 04:36:38'),
+(19, 19000, '2014-04-27 21:11:12'),
 (22, 1080, '2014-04-26 23:09:03'),
 (23, 944, '2014-04-27 01:08:27'),
-(25, 1600, '2014-04-28 05:04:24'),
+(25, 1020, '2014-04-27 04:26:37'),
 (27, 2000, '2014-04-27 21:08:29'),
-(28, 1000, '2014-04-27 21:00:12'),
-(29, 1000, '2014-04-27 23:22:43'),
-(30, 1000, '2014-04-28 05:25:27'),
-(31, 1000, '2014-04-28 05:26:32');
+(28, 1000, '2014-04-27 21:00:12');
 
 -- --------------------------------------------------------
 
@@ -201,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_name` varchar(40) NOT NULL,
   `pass` varchar(257) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `user`
@@ -213,20 +186,11 @@ INSERT INTO `user` (`uid`, `FName`, `LName`, `Email`, `user_name`, `pass`) VALUE
 (23, '', '', '', 'test1', '5a105e8b9d40e1329780d62ea2265d8a'),
 (25, '', '', '', 'test2', 'ad0234829205b9033196ba818f7a872b'),
 (27, '', '', '', 'test3', '8ad8757baa8564dc136c1e07507f4a98'),
-(28, '', '', '', 'test4', '86985e105f79b95d6bc918fb45ec7727'),
-(29, '', '', '', 'baller', '2141b17fb8b9c95b77e9eeccdc7e8010'),
-(30, '', '', '', 'bryce', 'bf8297477aec722a665d69d0dc88894e'),
-(31, '', '', '', 'beast', 'b878bc127cdb631d4fea3580fccceaa0');
+(28, '', '', '', 'test4', '86985e105f79b95d6bc918fb45ec7727');
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `admin`
---
-ALTER TABLE `admin`
-  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `leaderboard`
