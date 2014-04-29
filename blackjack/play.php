@@ -39,7 +39,6 @@ setSessions($debug);
             </div>
         </div>
         <div id="status">
-
         </div>
     </div>
     <div class="meta">

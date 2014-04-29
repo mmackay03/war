@@ -57,24 +57,19 @@ cards[51] = new Array(10, false);
 cards[52] = new Array(10, false);
 
 
-//numCards = 0;
+
 pTotal = 0;
-//pAceCt = 0;
-//dAceCt = 0;
-//bust = 0;
-//dBust = 0;
-//pBust = 0;
 dTotal = 0;
 status = 0;
 card1 = 0;
 card2 = 0;
-//next = 0;
 chips = 0;
 win = 0;
 lose = 0;
 draw = 0;
 color = 0;
 colorStr = '';
+status ='';
 
 function buttons() {
     var el = document.getElementById("buttons");
@@ -192,18 +187,11 @@ var betAmt = 0;
 function bet() {
     betAmt = document.getElementById('bet').value;
     betAmt = parseInt(betAmt);
-//      betAmt = 100;
-//    alert(betAmt);
-//    alert("status " + status);
-//    if (status == 0) {
-//        alert(status);
     if ((betAmt > 0) && (betAmt <= chips)) {
         dealer();
         hand();
         game();
-//            sendData();
-//        status = 1;
-        alert("chips" + chips + "bet = " + betAmt);
+//        alert("chips" + chips + "bet = " + betAmt);
     } else if (betAmt > chips) {
         alert("You do not have enough chips");
     } else {
@@ -214,25 +202,28 @@ function bet() {
 
 function game() {
     if (dTotal > pTotal) {
-        alert('Dealer Wins');
+        status = "Dealer Wins";
+//        alert('Dealer Wins');
         chips = (chips - betAmt);
-        alert("chips total " + chips);
-//        lose = true;
+//        alert("chips total " + chips);
         lose = 1;
-        alert("lose ----- " + lose);
+//        alert("lose ----- " + lose);
         bankrupt();
         sendData();
         displayChips();
     } else if (dTotal === pTotal) {
-        alert("Draw");
+        status = "Draw";
+//        alert("Draw");
         draw = 1;
+        sendData();
     } else {
-        alert('You Win');
+        status = "You Win!";
+//        alert('You Win');
         //win++
         win = 1;
-        alert("win ---- " + win);
+//        alert("win ---- " + win);
         chips += betAmt;
-        alert("chips total " + chips);
+//        alert("chips total " + chips);
 //        win = true;
         bankrupt();
         sendData();
@@ -241,14 +232,23 @@ function game() {
     }
 }
 
+function displayStatus() {
+    var el = document.getElementById("status");
+    
+    str = '';
 
+    str += status;
+    el.innerHTML = str;
+
+}
 function sendData() {
 //    $.post("upMoney.php", {'bet': betAmount,
 //        'WHATEVER': variableName,
 //        'ANOTHER': whateverVariable,
 //    "WON": boolVar,
 //"LOST": boolVar2});
-    alert("win = " + win + "  lose = " + lose);
+    displayStatus();
+//    alert("win = " + win + "  lose = " + lose);
     $.post("updateDB.php", {'chips': chips,
     'win': win,
     'lose': lose,
