@@ -3,7 +3,8 @@
 require_once("debug.php");
 require_once("blackLib.php");
 setSessions($debug);
-$uid = $_SESSION["uid"];
+
+//$uid = $_SESSION["uid"];
 
 $server = '127.0.0.1';
      $user = 'login';
