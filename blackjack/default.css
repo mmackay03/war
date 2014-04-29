@@ -497,11 +497,12 @@ html>body #footer {
     float: right;
     font-size: 25pt;
 }
-table, th
+table.admin, th.admin
 {
 border:1px solid pink;
 border-collapse:collapse;
 font-size: 20pt;
+float:center;
 
 }
 table.form, td.form{
@@ -512,6 +513,7 @@ table.form, td.form{
     font-size:15pt;
     text-align: center;
     color:#3399FF;
+    float:center;
 }
 td.dis{
     border: 1px solid pink;

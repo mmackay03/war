@@ -27,10 +27,10 @@ $count = 0;
 $getVal = mysqli_query($con, $getUid);
 while($info = mysqli_fetch_array( $getVal )){
     //echo $info;
-    echo "<table> ";
+    echo "<table class='admin'> ";
     if ($count == 0)
     {
-        echo "<tr><th>User Name</th><th>UID</th><th>Money</th></tr>";
+        echo "<tr><th class='admin'>User Name</th><th class='admin'>UID</th><th class='admin'>Money</th></tr>";
     }
     echo "<tr><td class='dis'>$info[user_name]</td><td class='dis'>$info[uid]</td><td class='dis'>$info[money]</td></tr>";
     echo "</table>";
