@@ -15,7 +15,7 @@ $con = mysqli_connect("127.0.0.1", "login", "login", "blackjack") or die(mysql_e
 <form action= admin.php method="post" name="adminF" onsubmit="return admin()">
     <table class="form">
         <tr><td>UID: </td><td><input type=text name=uid length=6></td></tr>
-        <tr><td>Money: </td><td><input type=text name=money length=10></td></tr>
+        <tr><td>Chips: </td><td><input type=text name=money length=10></td></tr>
         <tr><td>Admin: </td><td><input type=text name=adm length=1></td></tr>
         <tr><td><button type="submit" name="submit">submit</td></tr>
     </table>
@@ -49,9 +49,9 @@ if ($adminVal == 1) {
         //echo $info;
         echo "<table class='admin'> ";
         if ($count == 0) {
-            echo "<tr><th class='admin'>User Name</th><th class='admin'>UID</th><th class='admin'>Money</th><th class='admin'>Admin</th></tr>";
+            echo "<tr><th class='admin'>User Name</th><th class='admin'>UID</th><th class='admin'>Chips</th><th class='admin'>Admin</th></tr>";
         }
-        echo "<tr><td class='dis'>$info[user_name]</td><td class='dis'>$info[uid]</td><td class='dis'>$info[money]</td><td class='dis'>$info[admin]</td></tr>";
+        echo "<tr><td class='dis'>$info[user_name]</td><td class='dis'>$info[uid]</td><td class='dis'>$$info[money]</td><td class='dis'>$info[admin]</td></tr>";
         echo "</table>";
         $count++;
     }

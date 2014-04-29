@@ -24,9 +24,9 @@ while ($info = mysqli_fetch_array($leadQry)) {
         //echo $info;
         echo "<table class='admin'> ";
         if ($count == 0) {
-            echo "<tr><th class='admin'>User Name</th><th class='admin'>Money</th></tr>";
+            echo "<tr><th class='admin'>User Name</th><th class='admin'>Chips</th></tr>";
         }
-        echo "<tr><td class='dis'>$info[user_name]</td><td class='dis'>$info[money]</td></tr>";
+        echo "<tr><td class='dis'>$info[user_name]</td><td class='dis'>$$info[money]</td></tr>";
         echo "</table>";
         $count++;
     }
