@@ -3,6 +3,15 @@ require_once 'blackLib.php';
 require_once 'header.php';
 $con = mysqli_connect("127.0.0.1", "login", "login", "blackjack") or die(mysql_error());
 ?>
+<title>admin</title>
+<div id="banner">&nbsp;</div><br />
+
+<div class="post">
+    <h1 class="title">Admin</h1>
+    <br />
+    
+   
+</div>
 <form action= admin.php method="post" name="adminF" onsubmit="return admin()">
     <table class="form">
         <tr><td>UID: </td><td><input type=text name=uid length=6></td></tr>

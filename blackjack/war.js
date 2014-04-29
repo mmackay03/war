@@ -69,7 +69,7 @@ lose = 0;
 draw = 0;
 color = 0;
 colorStr = '';
-status ='';
+status = '';
 
 function buttons() {
     var el = document.getElementById("buttons");
@@ -89,16 +89,16 @@ function buttons() {
     el.innerHTML = str;
 
 }
-function setting(){
-    if (color === 0){
+function setting() {
+    if (color === 0) {
         colorStr = 'white';
-    }else if (color === 1){
+    } else if (color === 1) {
         colorStr = '#4186D3';
-    }else if (color === 2){
+    } else if (color === 2) {
         colorStr = '#00CC00';
-    }else if (color === 3){
+    } else if (color === 3) {
         colorStr = '#C9007A';
-    }else if (color === 4){
+    } else if (color === 4) {
         colorStr = '#8C04A8';
     }
 }
@@ -143,6 +143,19 @@ function hand() {
     getTotal(pTotal, 'pTotal', 'Your');
     nextCard = 3;
 }
+//dealer first 2 cards
+function dealer() {
+    dTotal = 0;
+    id = 'dealer';
+    clear(id);
+    dCard1 = getCard();
+    printCard(id, dCard1);
+    dCard2 = getCard();
+    printCard(id, dCard2);
+    dTotal = getValue(dCard1) + getValue(dCard2);
+    getTotal(dTotal, 'dTotal', 'Dealer');
+//    alert("DEALER TOTAL " + dTotal);
+}
 
 
 
@@ -165,26 +178,15 @@ function getTotal(total, id, name) {
     var ele = document.getElementById(id);
     str = ele.innerHTML;
     str = total;
-    ele.innerHTML = "<span style ='color: " + colorStr + ";'>" + name + " Total: " + str +"</span>";
+    ele.innerHTML = "<span style ='color: " + colorStr + ";'>" + name + " Total: " + str + "</span>";
 
-}
-
-//dealer first 2 cards
-function dealer() {
-    dTotal = 0;
-    id = 'dealer';
-    clear(id);
-    dCard1 = getCard();
-    printCard(id, dCard1);
-    dCard2 = getCard();
-    printCard(id, dCard2);
-    dTotal = getValue(dCard1) + getValue(dCard2);
-    getTotal(dTotal, 'dTotal', 'Dealer');
-//    alert("DEALER TOTAL " + dTotal);
 }
 
 var betAmt = 0;
 function bet() {
+    win = 0;
+    lose = 0;
+    draw = 0;
     betAmt = document.getElementById('bet').value;
     betAmt = parseInt(betAmt);
     if ((betAmt > 0) && (betAmt <= chips)) {
@@ -203,7 +205,7 @@ function bet() {
 function game() {
     if (dTotal > pTotal) {
         status = "Dealer Wins";
-//        alert('Dealer Wins');
+//        alert('Dealer Wins'); 
         chips = (chips - betAmt);
 //        alert("chips total " + chips);
         lose = 1;
@@ -222,19 +224,23 @@ function game() {
         //win++
         win = 1;
 //        alert("win ---- " + win);
+        blackjack();
         chips += betAmt;
 //        alert("chips total " + chips);
-//        win = true;
-        bankrupt();
+//        bankrupt();
         sendData();
         displayChips();
 
     }
 }
-
+function blackjack() {
+    if (pTotal === 21) {
+        betAmt = betAmt * 2;
+    }
+}
 function displayStatus() {
     var el = document.getElementById("status");
-    
+
     str = '';
 
     str += status;
@@ -242,21 +248,16 @@ function displayStatus() {
 
 }
 function sendData() {
-//    $.post("upMoney.php", {'bet': betAmount,
-//        'WHATEVER': variableName,
-//        'ANOTHER': whateverVariable,
-//    "WON": boolVar,
-//"LOST": boolVar2});
     displayStatus();
 //    alert("win = " + win + "  lose = " + lose);
     $.post("updateDB.php", {'chips': chips,
-    'win': win,
-    'lose': lose,
-    'draw': draw});
+        'win': win,
+        'lose': lose,
+        'draw': draw});
 //    displayChips();
 }
-function bankrupt(){
-    if(chips === 0){
+function bankrupt() {
+    if (chips === 0) {
         chips = 1000;
         alert("You will be credited $1000");
     }

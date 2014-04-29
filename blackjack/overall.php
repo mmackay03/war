@@ -117,7 +117,7 @@ setSessions($debug);
                     + graph1.title + "</th><th id='gth'>" +
                     graph2.title + "</th><th id='gth'>" + graph3.title + "</th><th id='gth'>" + graph4.title + "</th>";
             for (i = 0; i < chartData.length; i++) {
-                tPrint += "<tr><td id='gth'>";
+                tPrint += "<tr><td id='gth' style='width: 50%;'>";
                 tPrint += chartData[i].date;
                 tPrint += "</td><td id='gth'>";
                 tPrint += chartData[i].sumP;

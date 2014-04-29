@@ -10,13 +10,13 @@ function colorButton() {
 }
 function get(){
     color = document.querySelector('input[name="col"]:checked').value;
-    alert(color);
+    alert("color setting has been set");
     sendData();
 }
 
 
 function sendData() {
-    alert("color = " + color);
+//    alert("color = " + color);
     $.post("updateDB.php", {'color': color});
 }
 
