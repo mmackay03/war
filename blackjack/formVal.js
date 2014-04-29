@@ -5,6 +5,7 @@ function cUser(){
 	{
 		alert("You have the following errors: \n" + formErrors);
                 return false;
+                formErrors = "";
 	}
         else
         {
@@ -60,5 +61,47 @@ function nUserCheck()
             formErrors +="Please enter the same password for each value. \n"
         }
           
+	
+}
+function admin(){
+    aCheck();
+	if(formErrors != "")
+	{
+		alert("You have the following errors: \n" + formErrors);
+                formErrors = "";
+                return false;
+                
+	}
+        else
+        {
+            return true;
+        }
+	formErrors = "";
+}
+    
+function aCheck()
+{
+	uid = document.adminF.uid.value;
+	money = document.adminF.money.value;
+        money = parseInt(money);
+        adm = document.adminF.adm.value;
+        if (adm !== '')
+        {
+            adm = parseInt(adm);
+            if (adm !== 1 && adm !== 0)
+            {
+                formErrors +="Admin must be a 1 or 0. \n";
+            }
+        }
+	if (uid == "")
+	{
+		formErrors += "Please enter a uid. \n";
+	}
+//	if (money == "" || money < 0)
+//		{
+//			formErrors +="Please make the money greater than 0. \n";
+//		}
+        
+        
 	
 }

@@ -3,8 +3,8 @@
 $con=mysqli_connect("127.0.0.1","login","login","blackjack") or die(mysql_error());
 
 session_start();
-$_SESSION["user"] = "";
-$_SESSION["uid"] = "";
+//$_SESSION["user"] = "";
+//$_SESSION["uid"] = "";
 
 
 
@@ -13,8 +13,6 @@ if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-  else
-      echo "You Connected";
    
   //Current User Login
 // if (isset($_REQUEST['csubmit']))
@@ -47,7 +45,10 @@ if (isset($_REQUEST['csubmit']))
    // makes sure they filled it in
     if(!$_REQUEST['cuser'] | !$_REQUEST['cpass']) 
     {
-        die('You did not fill in a required field.');
+       echo '<script type="text/javascript">';
+         echo 'alert("You did not fill in all the fields. Please try again.");';
+         echo 'window.location = "index.php";';
+         echo '</script>';
     }
     $check = mysqli_query($con, "SELECT * FROM user WHERE user_name = '".$_REQUEST['cuser']."'")or die(mysql_error());
 
@@ -56,7 +57,10 @@ if (isset($_REQUEST['csubmit']))
 $check2 = mysqli_num_rows($check);
 if ($check2 == 0) 
 {
-    die('That user does not exist in our database. <a href=index.php>Click Here to Register</a>');
+    echo '<script type="text/javascript">';
+         echo 'alert("This user does not exist. Please create him or enter a new user.");';
+         echo 'window.location = "index.php";';
+         echo '</script>';
 }
 while($info = mysqli_fetch_array( $check )) 	
 {
@@ -66,7 +70,15 @@ while($info = mysqli_fetch_array( $check ))
  //gives error if the password is wrong
     if ($_REQUEST['cpass'] != $info['pass']) 
     {
-        die('Incorrect password, please try again.');
+        
+        echo '<script type="text/javascript">';
+         echo 'alert("This is an incorrect password! Please retry.");';
+         echo 'window.location = "index.php";';
+         echo '</script>';
+         
+         
+         
+         
     }
  else
  {  
@@ -100,7 +112,10 @@ header("Location: play.php");
         $npass2 = $_REQUEST['npass2'];
         if($npass1 != $npass2)
         {
-            die("Your two passwords do not match plesase re-enter.");
+            echo '<script type="text/javascript">';
+         echo 'alert("Your two passwords do not match. Please try again.");';
+         echo 'window.location = "index.php";';
+         echo '</script>';
         }
         $usercheck = $_REQUEST['nuser'];
         $check = mysqli_query($con,"SELECT user_name FROM user WHERE user_name = '$usercheck'") 
@@ -109,6 +124,10 @@ header("Location: play.php");
         //if the name exists it gives an error
         if ($check2 != 0) 
         {
+            echo '<script type="text/javascript">';
+         echo 'alert("This user already exists. Please enter a new name.");';
+         echo 'window.location = "index.php";';
+         echo '</script>';
             die('Sorry, the username '.$_REQUEST['nuser'].' is already in use.');
         }
         $_REQUEST['npass1'] = md5($_REQUEST['npass1']);
