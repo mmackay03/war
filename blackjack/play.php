@@ -10,7 +10,7 @@ setSessions($debug);
 <div id="banner">&nbsp;</div><br />
 
 <div class="post">
-    <h1 class="title">blackjack</h1>
+    <h1 class="title">blackjack war</h1>
     <br />
     <!--<img src="images/card/1.png" width="100">
     <img src="images/chip_1.png">
