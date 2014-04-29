@@ -7,27 +7,7 @@ setSessions($debug);
 ?>
 
 <title>overall stats</title>
-<style>
-    td, th{
-        border: 1px solid grey;
-        padding: 5px;
-        text-align: right;   
-    }
-    h4{
-        text-align: center;
-    }
-    #chartTable{
-        position: static;
-        margin-left: auto;
-        margin-right: auto;
-        width: 300px;
-        height: 400px;
-    }
-    #chartdiv{
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
+
 <div id="banner">&nbsp;</div><br />
 <div class="post">
     <h1 class="title">Overall Player Stats </h1>

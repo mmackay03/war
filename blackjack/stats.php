@@ -7,27 +7,6 @@ setSessions($debug);
 ?>
 
 <title>individual stats</title>
-<style>
-    td, th{
-        border: 1px solid grey;
-        padding: 5px;
-        text-align: right;   
-    }
-    h4{
-        text-align: center;
-    }
-    #chartTable{
-        position: static;
-        margin-left: auto;
-        margin-right: auto;
-        width: 300px;
-        height: 400px;
-    }
-    #chartdiv{
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
 <div id="banner">&nbsp;</div><br />
 <div class="post">
     <h1 class="title">Individual Stats </h1>
@@ -49,7 +28,8 @@ setSessions($debug);
             }
             request.open('GET', url, false);
             request.send();
-            alert(request.responseText);
+//            alert(request.responseText);
+//            alert("must be logged in");
             return eval(request.responseText);
         };
 

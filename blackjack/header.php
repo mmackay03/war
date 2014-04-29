@@ -35,7 +35,6 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 <script src="../js/amcharts/amcharts.js" type="text/javascript"></script>
 <script src="../js/amcharts/serial.js" type="text/javascript"></script>
 <script src="../js/amcharts/themes/chalk.js" type="text/javascript"></script>
-<script src="formVal.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -54,13 +53,12 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
                     <!--class="current_page_item"-->
                         <li><a href="play.php">Play</a></li>
                         <li><a href="stats.php">Individual Stats</a></li>
-                        <li><a href="leader.php">leader board</a></li>
+                        <li><a href="leader.php">Overall Stats</a></li>
 			<li><a href="color.php">color setting</a></li>
                          <?php
                         if(isset($_SESSION['admin']))
                             if($_SESSION['admin'] == 1)
                             echo "<li><a href='admin.php'>Admin</a></li>";
-                            
                         ?>
 			<li><a href="#"></a></li>
 			<li><a href="#"></a></li>
