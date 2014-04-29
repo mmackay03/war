@@ -41,9 +41,6 @@ setSessions($debug);
         <div id="status">
         </div>
     </div>
-    <div class="meta">
-        <p class="byline">Posted on July 21, 2007 byFreeCssTemplates</p>
-    </div>
 </div>
 <?PHP
 

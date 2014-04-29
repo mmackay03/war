@@ -6,10 +6,11 @@ require_once ('header.php');
 setSessions($debug);
 ?>
 
-<title>individual stats</title>
+<title>overall stats</title>
+
 <div id="banner">&nbsp;</div><br />
 <div class="post">
-    <h1 class="title">Individual Stats </h1>
+    <h1 class="title">Overall Player Stats </h1>
     <br />
     <div id="chartdiv" style="width: 740px; height: 400px;"></div>
 
@@ -29,7 +30,6 @@ setSessions($debug);
             request.open('GET', url, false);
             request.send();
 //            alert(request.responseText);
-//            alert("must be logged in");
             return eval(request.responseText);
         };
 
@@ -42,7 +42,7 @@ setSessions($debug);
         AmCharts.ready(function() {
 
             // load the data
-            var chartData = AmCharts.loadJSON('sgraphdata.php');
+            var chartData = AmCharts.loadJSON('ographdata.php');
 
             // SERIAL CHART    
             chart = new AmCharts.AmSerialChart();
@@ -91,7 +91,7 @@ setSessions($debug);
             graph3.lineAlpha = 0.5;
             graph3.title = "Losses";
             chart.addGraph(graph3);
-            
+
             var graph4 = new AmCharts.AmGraph();
             graph4.valueField = "sumD";
             graph4.bullet = "bubble";
@@ -102,9 +102,6 @@ setSessions($debug);
             graph4.lineAlpha = 0.5;
             graph4.title = "Draws";
             chart.addGraph(graph4);
-
-
-
 
             // CATEGORY AXIS 
             chart.categoryAxis.parseDates = true;
@@ -142,6 +139,8 @@ setSessions($debug);
 
 
     </script>
+
+    
 </div>
 <?PHP
 
