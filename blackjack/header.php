@@ -1,3 +1,17 @@
+<?php
+   require_once("debug.php");
+   require_once("blackLib.php");
+   if(isset($_SESSION['uid'])){
+   $con=mysqli_connect("127.0.0.1","login","login","blackjack") or die(mysql_error());
+   $admin = "SELECT admin FROM admin WHERE uid = $_SESSION[uid]";
+   $addAdmin = mysqli_query($con, $admin);
+   while($info = mysqli_fetch_array( $addAdmin )){
+       $_SESSION['admin'] = $info['admin'];
+   }
+   }
+    setSessions($debug);
+?>
+
 <html>
 <!--
 
@@ -41,18 +55,22 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
                         <li><a href="stats.php">Individual Stats</a></li>
                         <li><a href="leader.php">leader board</a></li>
 			<li><a href="color.php">color setting</a></li>
-		
+                         <?php
+                        if(isset($_SESSION['admin']))
+                            if($_SESSION['admin'] == 1)
+                            echo "<li><a href='admin.php'>Admin</a></li>";
+                        ?>
 			<li><a href="#"></a></li>
 			<li><a href="#"></a></li>
-			<li><a href="#"></a></li>
-			<li><a href="#"></a></li>
-			<li class="last"><a href="logout.php">Log Out</a>
-                            <?php 
-                            if(isset($_SESSION["user"]))
+                        <?php
+                        if(isset($_SESSION['user']))
+                                echo "<li class='last'><a href='logout.php'>Log Out</a></li>";
+                        
+                        if(isset($_SESSION["user"]))
                                 echo $_SESSION["user"]
                             
                             ?>
-                        </li>
+                        
 		</ul>
 	</div>
 </div>
