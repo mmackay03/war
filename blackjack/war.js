@@ -250,7 +250,7 @@ function displayStatus() {
 
     str = '';
 
-    str += status;
+    str += "<span style ='color: " + colorStr + ";'>" + status + "</span>";
     el.innerHTML = str;
 
 }
