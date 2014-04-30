@@ -53,7 +53,10 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
                     <li><a href="index.php">Homepage</a></li> 
                     <!--class="current_page_item"-->
                         <li><a href="play.php">Play</a></li>
-                        <li><a href="stats.php">Individual Stats</a></li>
+			<?php
+			if(isset($_SESSION['user']))
+                        	echo '<li><a href="stats.php">Individual Stats</a></li>'
+			?>
                         <li><a href="overall.php">Overall Stats</a></li>
                         <li><a href="leader.php">leader board</a></li>
 			<li><a href="color.php">color setting</a></li>
