@@ -71,6 +71,8 @@ color = 0;
 colorStr = '';
 status = '';
 
+
+//get the data from
 function buttons() {
     var el = document.getElementById("buttons");
     $.ajaxSetup({
@@ -89,6 +91,7 @@ function buttons() {
     el.innerHTML = str;
 
 }
+//font color on play page
 function setting() {
     if (color === 0) {
         colorStr = 'white';
@@ -112,7 +115,7 @@ function getCard() {
     return randCard;
 }
 
-//printing player cards
+//printing cards
 function printCard(id, card) {
     str = '';
     var el = document.getElementById(id);
@@ -125,12 +128,13 @@ function printCard(id, card) {
     el.innerHTML = str;
 }
 
+//clear div
 function clear(id) {
     document.getElementById(id).innerHTML = "";
 }
 
 
-//player hand (first two cards)
+//player hand
 function hand() {
     pTotal = 0;
     id = 'player';
@@ -143,7 +147,7 @@ function hand() {
     getTotal(pTotal, 'pTotal', 'Your');
     nextCard = 3;
 }
-//dealer first 2 cards
+//dealer cards
 function dealer() {
     dTotal = 0;
     id = 'dealer';
@@ -173,7 +177,7 @@ function displayChips() {
     str = chips;
     ele.innerHTML = "<span style ='color: " + colorStr + ";'>" + "Your Chips: <br />$" + str + "</span>";
 }
-//display player total
+//display player and dealer total
 function getTotal(total, id, name) {
     var ele = document.getElementById(id);
     str = ele.innerHTML;
@@ -182,6 +186,7 @@ function getTotal(total, id, name) {
 
 }
 
+//set bet and reset wins, losses, and draw
 var betAmt = 0;
 function bet() {
     win = 0;
@@ -189,6 +194,7 @@ function bet() {
     draw = 0;
     betAmt = document.getElementById('bet').value;
     betAmt = parseInt(betAmt);
+    //if valid bet run the game
     if ((betAmt > 0) && (betAmt <= chips)) {
         dealer();
         hand();
@@ -199,9 +205,10 @@ function bet() {
     } else {
         alert("Must place a bet to play!");
     }
-//    }
 }
 
+
+//checks who wins and calculates chips
 function game() {
     if (dTotal > pTotal) {
         status = "Dealer Wins";

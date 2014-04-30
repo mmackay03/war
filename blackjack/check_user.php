@@ -14,30 +14,6 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
    
-  //Current User Login
-// if (isset($_REQUEST['csubmit']))
-// {
-//     //Checks if there is a login cookie
-//    if(isset($_SESSION['ID_blackjack']))
-// //if there is, it logs you in and directes you to the members page
-// { 
-// 	$cuser = $_SESSION['ID_blackjack']; 
-//
-// 	$cpass = $_SESSION['Key_blackjack'];
-// 	$check = mysqli_query($con, "SELECT * FROM user WHERE user_name = '$cuser'")or die(mysql_error());
-// 	while($info = mysqli_fetch_array( $check )) 	
-// 	{
-//            if ($cpass != $info['pass']) 
-//            {
-//            }
-//            else
-//            {
-//                header("Location: play.php");
-//            }
-// 	}
-// }
-
-
  //if the login form is submitted 
 
 if (isset($_REQUEST['csubmit'])) 
