@@ -15,7 +15,7 @@ setSessions($debug);
    
 </div>
 <?PHP
-$uid = $_SESSION["uid"];
+$con = mysqli_connect("127.0.0.1", "login", "login", "blackjack") or die(mysql_error());
 
 $leadStr ="SELECT u.user_name, i.money FROM `uinfo` AS i, `user` AS u WHERE i.uid = u.uid ORDER BY i.money DESC LIMIT 5";
 $leadQry = mysqli_query($con, $leadStr);
