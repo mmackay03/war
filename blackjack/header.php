@@ -35,6 +35,7 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 <script src="../js/amcharts/amcharts.js" type="text/javascript"></script>
 <script src="../js/amcharts/serial.js" type="text/javascript"></script>
 <script src="../js/amcharts/themes/chalk.js" type="text/javascript"></script>
+<script src="formVal.js" type="text/javascript"></script>
 </head>
 <body>
 
