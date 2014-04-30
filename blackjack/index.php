@@ -6,20 +6,20 @@ require_once 'header.php';
 			<h1 class="title">Log in to play</h1>
 			<div id="user">
 				<div id="userleft">
-                                    <form action="check_user.php" method="post">
+                                    <form action="check_user.php" name ="cUserF" method="post" onsubmit="return cUser()">
 					<div id="centerthis"><h4>Already a user?</h4></div>
 					user name: <input type="text" name='cuser'><br />
 					password:  <input type="password" name='cpass'><br />
-					<button type="submit" name="csubmit">Log in
+                                        <button type="submit" name="csubmit">Log in
                                     </form>
 				</div>
 				<div id="userright">
-                                    <form action="check_user.php" method="post">
+                                    <form action="check_user.php" name="nUserF" method="post" onsubmit="return nUser()">
 					<div id="centerthis"><h4>New user?</h4></div>
 					user name: <input type="text" name="nuser"><br />
 					password:  <input type="password" name="npass1"><br />
 					re-enter password: <input type="password" name="npass2"><br />
-					<button type="submit" name="nsubmit">Create account
+                                        <button type="submit" name="nsubmit">Create account
                                     </form>                                     
 				</div>
 			</div>
